@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bias as Shown in the ADULT Dataset</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bias as Shown in the ADULT Dataset</h1>
+        
+        <!-- income distribution -->
+        <section>
+            <h2>Income Distribution by Gender</h2>
+            <p>This visualization shows the actual income distribution across genders in the ADULT dataset.</p>
+            <div id="income-distribution"></div>
+        </section>
+
+        <!-- confusion matrix -->
+        <section>
+            <h2>Prediction Bias Analysis</h2>
+            <p>This visualization shows the confusion matrix for income predictions across different demographic groups.</p>
+            <div id="confusion-matrix"></div>
+        </section>
+    </div>
+    
+    <!-- importing d3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <!-- importing visualization code -->
+    <script type="module">
+        import { visualizeConfusionMatrix, visualizeIncomeDistribution } from './chapter-1.js';
+        
+        // waiting for dom to load
+        document.addEventListener('DOMContentLoaded', () => {
+            // income distribution visualization
+            const distributionSvg = d3.select("#income-distribution")
+                .append("svg")
+                .attr("width", "100%")
+                .attr("height", "500px");
+            
+            const distributionContent = distributionSvg.append("g")
+                .attr("class", "content");
+            
+            visualizeIncomeDistribution(distributionContent);
+
+            // confusion matrix visualization
+            const confusionSvg = d3.select("#confusion-matrix")
+                .append("svg")
+                .attr("width", "100%")
+                .attr("height", "500px");
+            
+            const confusionContent = confusionSvg.append("g")
+                .attr("class", "content");
+            
+            visualizeConfusionMatrix(confusionContent);
+        });
+    </script>
+</body>
+</html>

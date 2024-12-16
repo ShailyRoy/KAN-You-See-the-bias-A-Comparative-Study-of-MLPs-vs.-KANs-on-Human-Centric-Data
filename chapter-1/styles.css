@@ -1,0 +1,59 @@
+/* container styling */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+/* visualization container */
+#visualization {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+/* d3 tooltip styling */
+.d3-tip {
+    line-height: 1.4;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 12px;
+    pointer-events: none;
+}
+
+/* button styling */
+rect {
+    transition: fill 0.2s;
+}
+
+rect:hover {
+    fill: #ddd !important;
+}
+
+/* text styling */
+text {
+    font-size: 12px;
+}
+
+.value {
+    font-weight: bold;
+}
+
+/* axis styling */
+.axis path,
+.axis line {
+    stroke: #ccc;
+}
+
+.axis text {
+    fill: #666;
+}

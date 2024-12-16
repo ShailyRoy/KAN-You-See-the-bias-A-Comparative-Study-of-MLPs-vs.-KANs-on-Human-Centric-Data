@@ -1,0 +1,62 @@
+.chapter-header h2 {
+    color: #8c1d40;
+    font-weight: bold;
+    font-size: 1.8em;
+}
+
+/* Authors centered */
+.authors p {
+    text-align: center;
+}
+
+.chapter-content {
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+/* Ensure lists look good */
+.chapter-content ul {
+    margin-left: 20px;
+    list-style: square;
+}
+
+.key-insights ul {
+    list-style: disc;
+    margin-left: 15px;
+}
+
+.transition {
+    font-style: italic;
+    margin-top: 15px;
+}
+
+.impact-section {
+    background-color: #fefae0;
+    border-left: 5px solid #ffd700;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+p {
+    text-align: justify;
+}
+
+/* Fade-in scroll effect */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInMove 1.5s forwards;
+    animation-delay: 0.2s; /* slight delay for a smoother feel */
+}
+
+@keyframes fadeInMove {
+    0% {
+        opacity:0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity:1;
+        transform: translateY(0);
+    }
+}

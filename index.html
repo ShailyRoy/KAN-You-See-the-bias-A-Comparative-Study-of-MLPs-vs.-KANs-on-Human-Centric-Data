@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>KAN You See the Bias?</title>
+<link href="styles.css" rel="stylesheet"/>
+<!-- include D3.js v7 -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<!-- include D3-tip -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
+<!-- include Scrollama -->
+<script src="https://unpkg.com/scrollama"></script>
+<link href="story.css" rel="stylesheet"/>
+</head>
+
+
+
+
+<body>
+<div class="banner"></div>
+<div id="title-wrapper">
+<section data-step="0" id="title-section" class="fade-in">
+<img alt="ASU Logo" class="asu-logo" src="photos/asu_logo.png"/>
+<h1>KAN You See the Bias?</h1>
+<h2 class="chapter-header fade-in">A Comparative Study of MLPs vs. KANs on Human-Centric Data</h2>
+<div class="authors">
+<p>Harshit Sharma • Chenwei Cui • Shaily Roy • Sanika Chavan • Thor Abbasi</p>
+</div>
+<div class="section-spacer"></div>
+</section>
+</div>
+<div id="container">
+<div id="left-panel">
+<section class="chapter-section fade-in" data-step="1">
+<div class="chapter-header fade-in">
+<h2 class="chapter-header section-header">What is Algorithmic Bias?</h2>
+</div>
+<div class="chapter-content">
+<p>
+Imagine a world where you apply for a job, a loan, or a college admission, and an invisible algorithm decides your fate. 
+This unseen force isn’t always fair. <strong>Algorithmic bias</strong> occurs when computer systems—often powered by <em>machine learning</em>, 
+a method where computers learn patterns from examples—produce skewed results that disadvantage certain groups. 
+These biases can stem from flawed training data, incorrect assumptions, or missing features.
+</p>
+<div class="impact-section">
+<h3>Why It Matters:</h3>
+<p>
+When these biases emerge, real people are affected. Unfair outcomes can influence who gets hired, who receives a loan, 
+and how justice is served. Recognizing bias is the first step toward building more equitable solutions.
+</p>
+</div>
+</div>
+</section>
+<section class="fade-in" data-step="2">
+<div class="chapter-header fade-in">
+<h2 class="chapter-header section-header">Case Study: The ADULT Dataset</h2>
+</div>
+<div class="chapter-content">
+<p>
+Consider the widely studied <em>ADULT dataset</em>, derived from 1994 U.S. census data.
+Its goal seems simple: 
+predict whether a person’s income surpasses $50,000. Yet this dataset carries historical imbalances—such as underrepresented 
+high-earning females—that lead models trained on it to <strong>inherit societal prejudices</strong>. 
+In other words, these machine learning models can “learn” to undervalue certain groups, continuing a cycle of inequality.
+</p>
+</div>
+</section>
+<section class="fade-in" data-step="3">
+<div class="chapter-header fade-in">
+<h2 class="chapter-header section-header">Revealing Bias through Confusion Matrices</h2>
+</div>
+<div class="chapter-content">
+<p>
+After training a logistic regression model, we use a <em>confusion matrix</em>—a table showing correct and incorrect predictions—to understand how gender 
+influences outcomes. When you select a gender, notice how the matrix changes. Machine learning models sometimes fail more 
+often for certain groups, reflecting deeper biases hidden in the data.
+</p>
+<div style="margin: 10px 0;">
+<label for="gender-select" style="margin-right: 10px;">Select Gender:</label>
+<select id="gender-select" style="padding: 5px; font-size: 14px; border-radius: 4px;">
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+</select>
+</div>
+<div class="key-insights">
+<h3>Key Insights:</h3>
+<ul>
+<li><strong>True Positive:</strong> Correctly predicted high-income individuals</li>
+<li><strong>True Negative:</strong> Correctly predicted low-income individuals</li>
+<li><strong>False Positive:</strong> Incorrectly labeled low-income individuals as high-income</li>
+<li><strong>False Negative:</strong> Missed identifying actual high-income individuals</li>
+</ul>
+</div>
+<div class="impact-section">
+<h3>Why It Matters:</h3>
+<p>
+This understanding is crucial for improving fairness in algorithms that increasingly shape human opportunities. A small oversight at the data level can balloon into large-scale 
+unfairness in society.
+</p>
+</div>
+<div class="transition">
+<h3>A Shift in Perspective:</h3>
+<p>
+Next, we’ll explore the WESAD dataset, focusing on wearable sensor data. By understanding how different datasets and sensor 
+placements affect what models learn, we uncover new layers of complexity—and opportunity—for reducing bias.
+</p>
+</div>
+</div>
+</section>
+<section class="fade-in" data-step="4">
+<div class="chapter-header fade-in">
+<h2 class="chapter-header section-header">Introducing the WESAD Dataset</h2>
+</div>
+<div class="chapter-content">
+<p>
+The <em>WESAD dataset</em> is a rich collection of physiological signals from wearable sensors that track stress and emotional states. 
+From 15 participants (12 male, 3 female), it records signals like:
+</p>
+<ul>
+<li><strong>EDA (Electrodermal Activity):</strong> Reflects skin conductance changes, often linked to stress.</li>
+<li><strong>BVP (Blood Volume Pulse):</strong> Indicates heart rate patterns and alerts us to cardiovascular responses.</li>
+<li><strong>TEMP (Temperature):</strong> Captures subtle shifts in body heat correlated with emotions or relaxation.</li>
+</ul>
+<p>
+These participants differ in age, height, weight, and dominant hand, influencing how sensors pick up signals.
+</p>
+<div class="impact-section">
+<h3>Why It Matters:</h3>
+<p>
+By analyzing diverse data modalities, we uncover how different signals can reveal distinct biases in model training. 
+Understanding these nuances helps us consider fairness across multiple dimensions.
+</p>
+
+</div>
+</div>
+</section>
+
+<section class="fade-in" data-step="5">
+<div class="chapter-header fade-in">
+<h2 class="chapter-header section-header">Exploring Participant Profiles</h2>
+</div>
+<div class="chapter-content">
+<p>
+Below we showcase some sample from the dataset.
+</p>
+<ul>
+<li><strong>EDA (Electrodermal Activity):</strong> Reflects skin conductance changes, often linked to stress.</li>
+<li><strong>BVP (Blood Volume Pulse):</strong> Indicates heart rate patterns and alerts us to cardiovascular responses.</li>
+<li><strong>TEMP (Temperature):</strong> Captures subtle shifts in body heat correlated with emotions or relaxation.</li>
+</ul>
+
+<div style="margin: 10px 0;">
+<label for="gender-select-chapter-2" style="margin-right: 10px;">Select Gender:</label>
+<select id="gender-select-chapter-2" style="padding: 5px; font-size: 14px; border-radius: 4px;">
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+</select>
+</div>
+
+<!-- male version -->
+<div id="male-content" style="display: none;">
+<h2>Participant 2</h2>
+<p><strong>Demographics:</strong><br/>
+Gender: Male, Age: 27, Height: 175 cm, Weight: 80 kg, Dominant Hand: Right</p>
+<p>
+Moderate EDA fluctuations, steady BVP patterns, and stable temperature readings paint a balanced physiological profile. 
+These subtle signals can matter when models (like MLPs or KANs on the WESAD dataset) try to predict stress or emotional states.
+</p>
+</div>
+
+<!-- female version -->
+<div id="female-content" style="display: none;">
+<h2>Participant 17</h2>
+<p><strong>Demographics:</strong><br/>
+Gender: Female, Age: 29, Height: 165 cm, Weight: 55 kg, Dominant Hand: Right</p>
+<p>
+A sharp initial EDA spike followed by calm, a steady BVP rhythm with a few peaks, and a gradual temperature drop 
+suggest dynamic physiological changes.
+</p>
+</div>
+
+<script>
+document.getElementById('gender-select-chapter-2').addEventListener('change', function() {
+    const maleContent = document.getElementById('male-content');
+    const femaleContent = document.getElementById('female-content');
+                
+    if (this.value === 'Male') {
+        maleContent.style.display = 'block';
+        femaleContent.style.display = 'none';
+    } else {
+        maleContent.style.display = 'none';
+        femaleContent.style.display = 'block';
+    }
+});
+// show initial content based on default selection
+document.getElementById('gender-select-chapter-2').dispatchEvent(new Event('change'));
+</script>
+</div>
+</section>
+
+<section class="fade-in" data-step="6">
+<div class="chapter-header fade-in">
+<h2 class="chapter-header section-header">Modeling the WESAD Dataset with Neural Networks</h2>
+</div>
+<div class="chapter-content">
+<p>
+To analyze this dataset, we implemented artificial neural networks as our primary modeling approach.
+Neural networks are sophisticated machine learning models capable of approximating any continuous function through their layered architecture.
+While increasing the model's complexity through additional layers and neurons enhances its representational power and ability to capture intricate patterns, this comes with increased computational overhead and the risk of overfitting.
+</p>
+<div id="controls">
+<label>Complexity: </label>
+<input id="complexity-slider" max="5" min="1" type="range" value="2"/>
+</div>
+</div>
+</section>
+
+<section class="fade-in" data-step="7">
+<div class="chapter-header fade-in">
+<h2 class="chapter-header section-header">Understanding MLPs</h2>
+</div>
+<div class="chapter-content">
+<p>
+The Multi-Layer Perceptron, or MLP, is the classic type of neural network made by layered digital neurons.
+It is the fundamental building block of deep learning. However, MLPs are known to manifest biased outcomes if the dataset is biased.
+</p>
+
+<p>
+On the WESAD dataset, if the input data is imbalanced or skewed, an MLP can unintentionally 
+learn biased decision boundaries. For example, with fewer female participants, the MLP might perform better on male data 
+simply due to more exposure, reinforcing inequalities.
+</p>
+
+</section>
+
+<section class="fade-in" data-step="8">
+<div class="chapter-header fade-in">
+<h2 class="chapter-header section-header">Introducing KANs</h2>
+</div>
+<div class="chapter-content">
+<p>
+On the contrary, the recently proposed Kolmogorov-Arnold network (KAN) might offer a solution.
+Instead of having linear weights between nodes, KANs have curvy univariate functions, also called splines.
+This may improve generalization. Indeed, KAN might seek more  fundamental representations, thereby distributing focus more evenly across all participants.
+</p>
+
+<div class="impact-section">
+<h3>Why It Matters:</h3>
+<p>
+KANs represent a step toward fairer machine learning systems by improving the generalization ability. 
+For the WESAD dataset, this can soften the impact of gender imbalances and lead to less biased outcomes across different participant groups.
+</p>
+</div>
+</div>
+</section>
+
+<section class="fade-in" data-step="9">
+<div class="chapter-header fade-in">
+<h2 class="chapter-header section-header">MLP vs KAN: Pros and Cons</h2>
+</div>
+<div class="chapter-content">
+<p>
+In theory, while MLPs are faster and more versatile, KANs have improved generalization, that is, it works better when fewer data is presented. This can potentially help the under-represented groups in datasets.
+</p>
+<p>
+    Let's take a look at the experiment results!
+</p>
+</div>
+</section>
+
+<section class="fade-in" data-step="10">
+<div class="chapter-header fade-in">
+<h2 class="chapter-header section-header">Individual-Level Performance on WESAD</h2>
+</div>
+<div class="chapter-content">
+<p>
+We did the experiments on a total of 15 participants. Both MLPs and KANs are evaluated. On the right hand side, we visualize the individual results.
+</p>
+<p>
+Hover your mouse to see the detailed results 👉
+</p>
+</div>
+</section>
+
+<section class="fade-in" data-step="11">
+<div class="chapter-header fade-in">
+<h2 class="chapter-header section-header">Gender-based Performance on WESAD</h2>
+</div>
+<div class="chapter-content">
+<p>
+Based on the graph, we can see that KAN has less bias than MLP. The data indicates that while MLPs achieve higher overall accuracy, KANs demonstrate more balanced performance across gender categories.
+</p>
+<p>
+In fact, KANs are having higher accuracies for female participants. This can be contributed to the improved generalization ability that KAN offers. This finding is quite interesting for applications where fairness metrics are as important as raw accuracy scores.
+</p>
+<p>
+Hover your mouse to see the detailed results 👉
+</p>
+</section>
+
+<section class="fade-in" data-step="12">
+<div class="chapter-header fade-in">
+<h2 class="chapter-header section-header">Overall Performance on WESAD</h2>
+</div>
+<div class="chapter-content">
+<p>
+Finally, we report the overall result. Overall we can observe that the MLP model performs better than the KAN model in terms of accuracy. However the KAN outperforms the MLP model in terms of fairness and equitable performance across sensitive groups like male and female.
+</p>
+<p>
+Hover your mouse to see the detailed results 👉
+</p>
+</div>
+</section>
+
+<section class="fade-in" data-step="13">
+<div class="chapter-header fade-in">
+<h2 class="chapter-header section-header">Interpreting the Results</h2>
+</div>
+<div class="chapter-content">
+<p>
+By looking at fairness metrics like demographic parity or equal opportunity via radar charts, we can compare how different models stack up.
+While in theory MLPs and KANs should offer similar accuracy, in practice, there is a tradeoff:
+<ul>
+<li>MLPs are more accurate than KANs.</li>
+<li>But KANs are less biased than MLPs.</li>
+</ul>
+</p>
+</div>
+</section>
+
+<section class="fade-in" data-step="14">
+<div class="chapter-header fade-in">
+<h2 class="chapter-header section-header">Future Directions</h2>
+</div>
+<div class="chapter-content">
+<p>
+We’ve seen that KANs might mitigate some biases in the WESAD dataset but at a performance cost. Reducing bias is a journey—refining data, exploring new models, and continually testing fairness metrics. This is how we move forward, step by step.
+<br>
+Promising future directions are:
+<ul>
+<li>Using novel architectures such as the Transformers.</li>
+<li>Better data research that can enrich and improve our datasets.</li>
+</ul>
+</p>
+</div>
+</section>
+
+<section class="fade-in" data-step="15">
+<div class="chapter-header fade-in">
+<h2 class="chapter-header section-header">Thank You!</h2>
+</div>
+<div class="chapter-content">
+<p>
+From the ADULT dataset to the WESAD dataset, and from MLPs to KANs, we’ve witnessed the current limit and mitigations of machine learning systems. As you leave this story, think about how every tweak in an algorithm shapes the world we share.
+</p>
+<div class="impact-section">
+<h3>Why It Matters:</h3>
+<p>
+Algorithmic fairness is everyone’s concern. Your awareness and input can drive change, ensuring that the future 
+of machine learning respects and uplifts all communities.
+</p>
+</div>
+</div>
+</section>
+</div>
+<div id="right-panel">
+<svg id="main-svg" style="width: 90%; height: 90%;"></svg>
+<p id="captioning"></p>
+</div>
+</div>
+<div class="bottom-banner"></div>
+<script src="main.js" type="module"></script>
+</body>
+</html>

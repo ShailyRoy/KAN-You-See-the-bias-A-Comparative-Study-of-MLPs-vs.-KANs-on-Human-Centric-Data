@@ -1,0 +1,177 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+section {
+    padding: 20px;
+}
+
+section:not(#title-section) {  /* apply to all sections except for the title section */
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    margin-bottom: 400px;
+    min-height: 400px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.section-spacer {
+    height: 40px;
+    width: 100%;
+    clear: both;
+}
+
+#title-section {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 2px solid #8c1d40; /* ASU maroon */
+}
+
+.asu-logo {
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+#title-section h1 {
+    color: #8c1d40;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+.authors p {
+    color: #666;
+    font-size: 1.1em;
+}
+
+.section-header {
+    border-bottom: 2px solid #8c1d40;
+}
+.chapter-header {
+    margin-bottom: 20px;
+}
+.definition-box, .historical-context, .dataset-highlight {
+    padding: 15px;
+    margin: 15px 0;
+    background: #f8f8f8;
+    border-radius: 6px;
+}
+.example-tag, .bias-tag {
+    display: inline-block;
+    padding: 5px 12px;
+    margin: 5px;
+    border-radius: 15px;
+    font-size: 0.9em;
+}
+.example-tag {
+    background: #8c1d40;
+    color: white;
+}
+.bias-tag {
+    background: #ffc627; /* ASU gold */
+    color: black;
+}
+.impact-examples, .bias-types {
+    margin-top: 10px;
+}
+
+#main-svg {
+    border: 2px solid #8C1D40; /* ASU maroon color */
+    border-radius: 10px; /* rounded corners */
+}
+
+#container {
+    position: relative;
+    display: flex;
+    margin-top: 0;
+}
+
+/*left panel (story)*/
+#left-panel {
+    width: 50%;
+    padding: 10px 50px;
+}
+
+/*right panel (visualization)*/
+#right-panel {
+    position: sticky;
+    background-color: #f7f7f7;
+    width: 50%;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 25px;
+    flex-direction: column;
+}
+
+/* style settings for all selections */
+select {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* style settings for all sliders */
+input[type="range"] {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* style settings for all spans (for sliders) */
+#confidence-threshold-value {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* banner styles */
+.banner, .bottom-banner {
+    width: 100%;
+    height: 60px;
+    background-color: #8c1d40;
+    z-index: 1000;
+}
+
+.banner {
+    position: absolute;
+    top: 0;
+}
+
+.bottom-banner {
+    width: 100%;
+    height: 60px;
+    background-color: #8c1d40;
+    clear: both;
+}
+
+/* Add styling for full-width title section */
+#title-wrapper {
+    width: 100%;
+    background-color: white;
+    padding: 40px 0 0 0;
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+#title-section {
+    width: 100%;
+    text-align: center;
+    padding: 20px 50px 0 50px;
+    border-bottom: 2px solid #8c1d40;
+    margin-bottom: 0;
+}
